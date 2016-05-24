@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.nicholasburns.mealmaprestaurant.MapsActivity">
+
+<fragment android:id="@+id/map"
+          android:name="com.google.android.gms.maps.SupportMapFragment"
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/genreViewButton"
+        android:onClick="sideBarButtonClick"
+        android:background="@drawable/bar_icon_copy"
+        android:contentDescription="@string/genre_filter_button_description"/>
+
+        <EditText
+            android:hint="@string/food_item_search_bar_hint"
+            android:id="@+id/food_item_search_bar"
+            android:layout_height="50dp"
+            android:layout_width="250dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/genreViewButton"
+            android:layout_toEndOf="@+id/genreViewButton"
+            style="@style/Base.Widget.AppCompat.SearchView"/>
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/food_item_search_button"
+            android:layout_toRightOf="@id/food_item_search_bar"
+            android:onClick="foodItemSearchBarSearchOnClick"/>
+    </RelativeLayout>
+</RelativeLayout>

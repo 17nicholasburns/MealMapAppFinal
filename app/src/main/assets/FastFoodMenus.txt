@@ -1,0 +1,1 @@
+!!Burger King!!(START)=Whopper.Whopper Jr.Tendercrisp Garden Salad.Chicken Tenders.!!Burger King!!(END)!!McDonald's!!(START)=Big Mac.Cheeseburger.Double Cheeseburger.!!McDonald's!!(END)!!Steak 'n Shake!!(START)=Steakburger.Double SteakBurger.!!Steak 'n Shake!!(END)

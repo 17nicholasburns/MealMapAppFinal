@@ -1,0 +1,1 @@
+GENRE:Fast Food(START)=Burger King.McDonald's.Steak 'n Shake!GENRE:Fast Food(END)GENRE:Dine-In(START)=Pasta House Co.The Cheesecake Factory!GENRE:Dine-In(END)GENRE:Italian(START)=Lombardo's Restaurant!GENRE:Italian(END)GENRE:Chinese(START)=...!GENRE:Chinese(END)GENRE:Sea Food(START)=...!GENRE:Sea Food(END)

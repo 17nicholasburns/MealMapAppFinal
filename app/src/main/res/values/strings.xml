@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MealMapRestaurant</string>
+    <string name="food1_description">An extremely delicious burger. Wowza is this a spicy delicious food</string>
+    <string name="food2_description">A salad. Not much you can say because it is just a normal salad</string>
+    <string name="food3_description">This thanksgiving turkey is a bargain! It is really small though...</string>
+    <string name="food4_description">Look at this juicy T-bone steak. At this point I have no idea what kind of restaurant this is, but the food is pretty good</string>
+    <string name="food5_description">Wait no. This should not be here. Someone is definitely fired.</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="info_window_genre_intro">Primary Genre: </string>
+    <string name="genre_button_label">Genres</string>
+    <string name="filterByGenreString">Filter by Genre:</string>
+    <string name="genre_filter_button_description">Filter the search for restaurants and food</string>
+    <string name="filter_submit_button_text">Submit</string>
+    <string name="genre_filter_submit_button_text">Submit</string>
+    <string name="food_item_search_bar_hint">Search...</string>
+</resources>
