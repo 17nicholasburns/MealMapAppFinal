@@ -23,14 +23,12 @@ public class FoodItemSearch {
         ctxt = c;
         for(int i = 0; i < genres.size(); i++){
             String menuFileName = RestaurantMenuRetriever.findGenreMenusTxt(genres.get(i));
-
+            Toast.makeText(ctxt, "Reading Genre Menus of" + genres.get(i), Toast.LENGTH_SHORT).show();
             try {
                 BufferedReader restaurantMenuReader = new BufferedReader(new InputStreamReader(ctxt.getAssets().open(menuFileName)));
                 String genreMenus = restaurantMenuReader.readLine();
                 String restaurantMenus = genreMenus.substring(0,genreMenus.length());
 
-                String startOfGenre = "!!"+genres.get(i)+"!!(START)=";
-                String endOfGenre = "!!"+genres.get(i)+"!!(END)";
 
                 while(genreMenus.length()>0) {
                     int locOfFoundText = genreMenus.indexOf(searchText);
@@ -40,7 +38,6 @@ public class FoodItemSearch {
 
                         Toast.makeText(ctxt, foodName, Toast.LENGTH_SHORT).show();
 
-                        findFoodRestaurant(foodName, restaurantMenus, genres.get(i));
                         Restaurant restOFFood = findFoodRestaurant(foodName, restaurantMenus, genres.get(i));
                         restaurants.add(restOFFood);
 
@@ -56,6 +53,10 @@ public class FoodItemSearch {
                 e.printStackTrace();
                 Toast.makeText(ctxt, "Error reading menus while searching for food items", Toast.LENGTH_LONG).show();
             }
+        }
+        for(int i = 0; i < restaurants.size(); i++){
+            Toast.makeText(ctxt, "restaurants list #"+i+": "+restaurants.get(i).getName(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(ctxt, "restaurants list #"+i+" location: "+restaurants.get(i).getLat() +" "+ restaurants.get(i).getLng(), Toast.LENGTH_SHORT).show();
         }
         return restaurants;
     }
@@ -85,7 +86,9 @@ public class FoodItemSearch {
 
         List<FoodItem> foodItemMenu = RestaurantRetriever.getMenuFoodItems(RestaurantMenu, ctxt);
 
-        return new Restaurant(tempMenu, R.drawable.restrant, foodItemMenu, genre, coords.latitude, coords.longitude);
+        Restaurant retRest = new Restaurant(tempMenu, R.drawable.restrant, foodItemMenu, genre, coords.latitude, coords.longitude);
+        Toast.makeText(ctxt,"findFoodRestaurant return:" +retRest.getName(), Toast.LENGTH_SHORT).show();
+        return retRest;
     }
 
     private static LatLng getLatLng(List<String> locs) {

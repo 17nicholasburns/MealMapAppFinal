@@ -46,9 +46,10 @@
             android:id="@+id/star_five"/>
 
         <Button
+            android:id="@+id/food_item_rate_button"
             android:layout_width="75dp"
-            android:layout_height="25dp"
-            android:text="@string/rate_button_text"
+            android:layout_height="wrap_content"
+            android:hint="@string/food_item_rate_button_hint"
             android:onClick="rateFoodItem"/>
     </LinearLayout>
 

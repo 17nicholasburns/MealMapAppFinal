@@ -25,7 +25,7 @@ public class FoodItemPage extends Activity{
 
         String FDesString = foodWasCalled.getExtras().getString("description");
 
-        int rating = getRating(foodName);
+        int rating = 4;
 
         //create image views for stars
         ImageView s1 = (ImageView) findViewById(R.id.star_one);
@@ -89,7 +89,7 @@ public class FoodItemPage extends Activity{
         foodDes.setText(FDesString);
     }
 
-    private int getRating(String foodName) {
+    //private int getRating(String foodName) {
 
-    }
+    //}
 }

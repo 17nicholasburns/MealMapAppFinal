@@ -1,6 +1,7 @@
 package com.example.nicholasburns.mealmaprestaurant;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.util.ArrayList;
@@ -32,9 +33,14 @@ public class RestaurantRetriever {
         getLatAndLng(restaurantLocations, restCtxt);
 
         for (int i= 0; i < restaurantNames.size(); i++){
-            List<String> menuStrings = RestaurantMenuRetriever.getRestaurantMenu("Fast Food", "McDonald's", restCtxt);
+            List<String> menuStrings = new ArrayList<>();
+            menuStrings = RestaurantMenuRetriever.getRestaurantMenu(genreName, restaurantNames.get(i), restCtxt);
             List<FoodItem> menu = getMenuFoodItems(menuStrings, restCtxt);
+            for(int j = 0; j < menuStrings.size(); j++){
+                Toast.makeText(restCtxt, menuStrings.get(j), Toast.LENGTH_SHORT).show();
+            }
             makeRestaurant(restaurantNames.get(i), lats[i], lngs[i], R.drawable.restrant, menu);
+            menuStrings.clear();
         }
         return restaurants;
     }
@@ -57,7 +63,9 @@ public class RestaurantRetriever {
     }
     public static List<FoodItem> getMenuFoodItems(List<String> menuStrings, Context restCtxt){
         List<FoodItem> menu = new ArrayList<>();
-        for(int i = 0; i < menu.size(); i++) {
+        menu.clear();
+        for(int i = 0; i < menuStrings.size(); i++) {
+            Toast.makeText(restCtxt, menuStrings.get(i), Toast.LENGTH_SHORT).show();
             menu.add(new FoodItem(menuStrings.get(i), R.drawable.food1, restCtxt.getResources().getString(R.string.food1_description)));
         }
         return menu;

@@ -64,12 +64,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         GenreRetriever genRet = new GenreRetriever(this);
         listOfGenres = genRet.getListOfGenres();
 
-        //listOfRestaurants = RestaurantRetriever.getListOfRestaurantsByGenre(this, "Fast Food");
+        listOfRestaurants = RestaurantRetriever.getListOfRestaurantsByGenre(this, "Fast Food");
         //RestaurantMenuRetriever.getRestaurantMenu("Fast Food", "McDonald's", this);
 
-        List<String> tempList = new ArrayList<>();
-        tempList.add("Fast Food");
-        FoodItemSearch.searchForFood("burger",this, tempList);
+        //List<String> tempList = new ArrayList<>();
+        //tempList.add("Fast Food");
+        //FoodItemSearch.searchForFood("burger",this, tempList);
 
 
         //testing the handler
@@ -151,6 +151,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void foodItemSearchBarSearchOnClick(View view){
+        mMap.clear();
+
         if(returnGenres.length <= 0){
             resetReturnGenres();
         }
