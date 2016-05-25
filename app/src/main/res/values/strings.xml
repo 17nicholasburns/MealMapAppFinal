@@ -13,4 +13,5 @@
     <string name="filter_submit_button_text">Submit</string>
     <string name="genre_filter_submit_button_text">Submit</string>
     <string name="food_item_search_bar_hint">Search...</string>
+    <string name="rate_button_text">Rate</string>
 </resources>

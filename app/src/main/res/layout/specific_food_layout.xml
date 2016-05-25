@@ -44,6 +44,12 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:id="@+id/star_five"/>
+
+        <Button
+            android:layout_width="75dp"
+            android:layout_height="25dp"
+            android:text="@string/rate_button_text"
+            android:onClick="rateFoodItem"/>
     </LinearLayout>
 
     <TextView

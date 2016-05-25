@@ -69,7 +69,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         List<String> tempList = new ArrayList<>();
         tempList.add("Fast Food");
-        FoodItemSearch.searchForFood("burger",this, tempList );
+        FoodItemSearch.searchForFood("burger",this, tempList);
 
 
         //testing the handler
@@ -158,6 +158,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         List<String> listOfReturnGenres = new ArrayList<>();
         for(int i = 0; i <returnGenres.length; i++){
             listOfReturnGenres.add(returnGenres[i]);
+            Toast.makeText(this, listOfReturnGenres.get(i), Toast.LENGTH_SHORT).show();
         }
 
         String searchText = String.valueOf(searchBar.getText());
