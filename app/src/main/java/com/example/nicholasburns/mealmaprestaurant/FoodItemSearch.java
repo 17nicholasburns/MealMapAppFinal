@@ -34,7 +34,7 @@ public class FoodItemSearch {
 
                 while(genreMenus.length()>0) {
                     int locOfFoundText = genreMenus.indexOf(searchText);
-                    if ((locOfFoundText>=startOfGenre.length())&&(locOfFoundText<genreMenus.indexOf(endOfGenre))){
+                    if (locOfFoundText>0){
 
                         foodName = findFullItemName(locOfFoundText, genreMenus, ctxt);
 

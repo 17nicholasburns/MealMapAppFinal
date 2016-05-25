@@ -17,8 +17,6 @@ public class FoodItemPage extends Activity{
 
         setContentView(R.layout.specific_food_layout);
 
-        int rating = 4;
-
         Intent foodWasCalled = getIntent();
 
         String foodName = foodWasCalled.getExtras().getString("clickedFood");
@@ -26,6 +24,8 @@ public class FoodItemPage extends Activity{
         int foodPicId = foodWasCalled.getExtras().getInt("foodPic");
 
         String FDesString = foodWasCalled.getExtras().getString("description");
+
+        int rating = getRating(foodName);
 
         //create image views for stars
         ImageView s1 = (ImageView) findViewById(R.id.star_one);
@@ -87,5 +87,9 @@ public class FoodItemPage extends Activity{
         foodImg.setImageResource(foodPicId);
 
         foodDes.setText(FDesString);
+    }
+
+    private int getRating(String foodName) {
+
     }
 }
