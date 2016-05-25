@@ -33,10 +33,7 @@ public class RestaurantRetriever {
 
         for (int i= 0; i < restaurantNames.size(); i++){
             List<String> menuStrings = RestaurantMenuRetriever.getRestaurantMenu("Fast Food", "McDonald's", restCtxt);
-            List<FoodItem> menu = new ArrayList<>();
-            menu.add(new FoodItem(menuStrings.get(0), R.drawable.food1, restCtxt.getResources().getString(R.string.food1_description)));
-            menu.add(new FoodItem(menuStrings.get(1), R.drawable.food2, restCtxt.getResources().getString(R.string.food2_description)));
-            menu.add(new FoodItem(menuStrings.get(2), R.drawable.food3, restCtxt.getResources().getString(R.string.food3_description)));
+            List<FoodItem> menu = getMenuFoodItems(menuStrings, restCtxt);
             makeRestaurant(restaurantNames.get(i), lats[i], lngs[i], R.drawable.restrant, menu);
         }
         return restaurants;
@@ -57,5 +54,12 @@ public class RestaurantRetriever {
             lats[i] = lat;
             lngs[i] = lng;
         }
+    }
+    public static List<FoodItem> getMenuFoodItems(List<String> menuStrings, Context restCtxt){
+        List<FoodItem> menu = new ArrayList<>();
+        for(int i = 0; i < menu.size(); i++) {
+            menu.add(new FoodItem(menuStrings.get(i), R.drawable.food1, restCtxt.getResources().getString(R.string.food1_description)));
+        }
+        return menu;
     }
 }
