@@ -62,19 +62,19 @@ public class RestaurantMenuRetriever {
         if(genreName.equalsIgnoreCase("Fast Food")) {
             return "FastFoodMenus.txt";
         }
-        else if(genreName.equalsIgnoreCase("Fast Food")) {
+        else if(genreName.equalsIgnoreCase("Dine-In")) {
             return "DineInMenus.txt";
         }
-        else if(genreName.equalsIgnoreCase("Fast Food")) {
+        else if(genreName.equalsIgnoreCase("Italian")) {
             return "ItalianMenus.txt";
         }
-        else if(genreName.equalsIgnoreCase("Fast Food")) {
+        else if(genreName.equalsIgnoreCase("Mexican")) {
             return "MexicanMenus.txt";
         }
-        else if(genreName.equalsIgnoreCase("Fast Food")) {
+        else if(genreName.equalsIgnoreCase("Chinese")) {
             return "ChineseMenus.txt";
         }
-        else if(genreName.equalsIgnoreCase("Fast Food")) {
+        else if(genreName.equalsIgnoreCase("Sea Food")) {
             return "SeaFoodMenus.txt";
         }
         else {

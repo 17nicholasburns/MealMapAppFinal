@@ -64,8 +64,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         GenreRetriever genRet = new GenreRetriever(this);
         listOfGenres = genRet.getListOfGenres();
 
-        listOfRestaurants = RestaurantRetriever.getListOfRestaurantsByGenre(this, "Fast Food");
-        RestaurantMenuRetriever.getRestaurantMenu("Fast Food", "McDonald's", this);
+        //listOfRestaurants = RestaurantRetriever.getListOfRestaurantsByGenre(this, "Fast Food");
+        //RestaurantMenuRetriever.getRestaurantMenu("Fast Food", "McDonald's", this);
 
         List<String> tempList = new ArrayList<>();
         tempList.add("Fast Food");

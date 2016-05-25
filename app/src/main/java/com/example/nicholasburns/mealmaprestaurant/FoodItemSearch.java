@@ -28,15 +28,24 @@ public class FoodItemSearch {
                 BufferedReader restaurantMenuReader = new BufferedReader(new InputStreamReader(ctxt.getAssets().open(menuFileName)));
                 String genreMenus = restaurantMenuReader.readLine();
                 String restaurantMenus = genreMenus.substring(0,genreMenus.length());
+
+                String startOfGenre = "!!"+genres.get(i)+"!!(START)=";
+                String endOfGenre = "!!"+genres.get(i)+"!!(END)";
+
                 while(genreMenus.length()>0) {
                     int locOfFoundText = genreMenus.indexOf(searchText);
-                    if (locOfFoundText>=0){
+                    if ((locOfFoundText>=startOfGenre.length())&&(locOfFoundText<genreMenus.indexOf(endOfGenre))){
+
                         foodName = findFullItemName(locOfFoundText, genreMenus, ctxt);
+
                         Toast.makeText(ctxt, foodName, Toast.LENGTH_SHORT).show();
+
                         findFoodRestaurant(foodName, restaurantMenus, genres.get(i));
                         Restaurant restOFFood = findFoodRestaurant(foodName, restaurantMenus, genres.get(i));
                         restaurants.add(restOFFood);
+
                         Toast.makeText(ctxt, restOFFood.getName(), Toast.LENGTH_SHORT).show();
+
                         genreMenus = genreMenus.substring(genreMenus.indexOf(foodName) +foodName.length());
                     }
                     else{
