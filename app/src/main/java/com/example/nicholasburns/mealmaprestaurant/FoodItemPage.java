@@ -89,7 +89,9 @@ public class FoodItemPage extends Activity{
         foodDes.setText(FDesString);
     }
 
-    //private int getRating(String foodName) {
+    private int getRating(String foodName) {
+        return 1;
+    }
 
-    //}
+    private void
 }

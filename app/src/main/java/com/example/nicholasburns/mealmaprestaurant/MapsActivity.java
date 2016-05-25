@@ -153,10 +153,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void foodItemSearchBarSearchOnClick(View view){
         mMap.clear();
 
-        if(returnGenres.length <= 0){
-            resetReturnGenres();
-        }
-
         List<String> listOfReturnGenres = new ArrayList<>();
         for(int i = 0; i <returnGenres.length; i++){
             listOfReturnGenres.add(returnGenres[i]);
