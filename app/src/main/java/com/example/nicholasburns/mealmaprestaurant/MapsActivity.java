@@ -151,10 +151,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void foodItemSearchBarSearchOnClick(View view){
-        String searchText = String.valueOf(searchBar.getText());
+        if(returnGenres.length <= 0){
+            resetReturnGenres();
+        }
 
+        List<String> listOfReturnGenres = new ArrayList<>();
+        for(int i = 0; i <returnGenres.length; i++){
+            listOfReturnGenres.add(returnGenres[i]);
+        }
+
+        String searchText = String.valueOf(searchBar.getText());
+        List<Restaurant> searchedRestaurants = new ArrayList<>();
         if(searchText.length()>0){
-            FoodItemSearch.searchForFood(searchText, this, listOfGenres);
+            searchedRestaurants =  FoodItemSearch.searchForFood(searchText, this, listOfReturnGenres);
+        }
+        if(searchedRestaurants.size()>0){
+            listOfRestaurants = searchedRestaurants;
+            addNewRestaurantMarkers();
+        }
+    }
+
+    private void resetReturnGenres() {
+        List <String> tempReturnGenres = gRetr.getListOfGenres();
+        returnGenres = new String[tempReturnGenres.size()];
+
+        for(int i = 0; i < tempReturnGenres.size(); i++){
+            returnGenres[i] = tempReturnGenres.get(i);
         }
     }
 
@@ -205,7 +227,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         if(listOfRestaurants.size() > 0) {
             mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(listOfRestaurants.get(0).getLat(), listOfRestaurants.get(0).getLng())));
-            mMap.moveCamera(CameraUpdateFactory.zoomBy(2));
         }
     }
 

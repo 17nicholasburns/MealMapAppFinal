@@ -17,9 +17,9 @@ import java.util.List;
 public class FoodItemSearch {
     private static String foodName;
     public static List<FoodItem> foodItems;
-    public static List<LatLng> foodLocations;
+    public static List<Restaurant> restaurants = new ArrayList<Restaurant>();
     private static Context ctxt;
-    public static void searchForFood(String searchText, Context c, List<String> genres){
+    public static List<Restaurant> searchForFood(String searchText, Context c, List<String> genres){
         ctxt = c;
         for(int i = 0; i < genres.size(); i++){
             String menuFileName = RestaurantMenuRetriever.findGenreMenusTxt(genres.get(i));
@@ -34,43 +34,49 @@ public class FoodItemSearch {
                         foodName = findFullItemName(locOfFoundText, genreMenus, ctxt);
                         Toast.makeText(ctxt, foodName, Toast.LENGTH_SHORT).show();
                         findFoodRestaurant(foodName, restaurantMenus, genres.get(i));
-                        //Restaurant restOFFood = findFoodRestaurant(foodName, restaurantMenus, genres.get(i));
-                        //Toast.makeText(ctxt, restOFFood.getName(), Toast.LENGTH_SHORT);
+                        Restaurant restOFFood = findFoodRestaurant(foodName, restaurantMenus, genres.get(i));
+                        restaurants.add(restOFFood);
+                        Toast.makeText(ctxt, restOFFood.getName(), Toast.LENGTH_SHORT).show();
                         genreMenus = genreMenus.substring(genreMenus.indexOf(foodName) +foodName.length());
                     }
                     else{
                         genreMenus = "";
                     }
                 }
-
             } catch (IOException e) {
                 e.printStackTrace();
                 Toast.makeText(ctxt, "Error reading menus while searching for food items", Toast.LENGTH_LONG).show();
             }
         }
+        return restaurants;
     }
 
-    private static void findFoodRestaurant(String foodName, String genreMenus, String genre) {
+    private static Restaurant findFoodRestaurant(String foodName, String genreMenus, String genre) {
         int indOfStart = genreMenus.indexOf(foodName);
         int indOfStartOfRest = 0;
         for(int i = indOfStart; i > 0 && !genreMenus.substring(i,i+1).equals("("); i--){
             indOfStartOfRest = i;
         }
-        indOfStartOfRest = indOfStartOfRest-3;
+
+        indOfStartOfRest = indOfStartOfRest-4;
         for(int i = indOfStartOfRest; i > 0 && !genreMenus.substring(i,i+1).equals("!"); i--){
             indOfStartOfRest = i;
         }
+
         String tempMenu = genreMenus.substring(indOfStartOfRest);
-        Toast.makeText(ctxt, tempMenu, Toast.LENGTH_SHORT).show();
         tempMenu = tempMenu.substring(0, tempMenu.indexOf("!"));
-        Toast.makeText(ctxt, tempMenu, Toast.LENGTH_SHORT).show();
-        //List<String> tempList = new ArrayList<>();
-        //tempList.add(tempMenu);
-        //List<String> locs = RestaurantLocationRetriever.getRestaurantLocations(ctxt, genre, tempList);
-        //LatLng coords = getLatLng(locs);
-        //List<String> RestaurantMenu = RestaurantMenuRetriever.getRestaurantMenu(genre, tempMenu, ctxt);
-        //List<FoodItem> foodItemMenu = RestaurantRetriever.getMenuFoodItems(RestaurantMenu, ctxt);
-        //return new Restaurant(tempMenu, R.drawable.restrant, foodItemMenu, genre, coords.latitude, coords.longitude);
+
+        List<String> tempList = new ArrayList<>();
+        tempList.add(tempMenu);
+
+        List<String> locs = RestaurantLocationRetriever.getRestaurantLocations(ctxt, genre, tempList);
+        LatLng coords = getLatLng(locs);
+
+        List<String> RestaurantMenu = RestaurantMenuRetriever.getRestaurantMenu(genre, tempMenu, ctxt);
+
+        List<FoodItem> foodItemMenu = RestaurantRetriever.getMenuFoodItems(RestaurantMenu, ctxt);
+
+        return new Restaurant(tempMenu, R.drawable.restrant, foodItemMenu, genre, coords.latitude, coords.longitude);
     }
 
     private static LatLng getLatLng(List<String> locs) {
@@ -92,7 +98,6 @@ public class FoodItemSearch {
         for(int i = locOfFoundText; i < genreMenu.length() && !genreMenu.substring(i, i+1).equalsIgnoreCase("."); i++){
             indexOfEnd = i;
         }
-        Toast.makeText(ctxt, genreMenu.substring(indexOfStart, indexOfEnd+1),Toast.LENGTH_SHORT).show();
         return genreMenu.substring(indexOfStart, indexOfEnd+1);
     }
 }
