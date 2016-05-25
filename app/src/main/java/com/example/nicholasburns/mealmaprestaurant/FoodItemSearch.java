@@ -21,6 +21,7 @@ public class FoodItemSearch {
     private static Context ctxt;
     public static List<Restaurant> searchForFood(String searchText, Context c, List<String> genres){
         ctxt = c;
+        restaurants.clear();
         for(int i = 0; i < genres.size(); i++){
             String menuFileName = RestaurantMenuRetriever.findGenreMenusTxt(genres.get(i));
             Toast.makeText(ctxt, "Reading Genre Menus of" + genres.get(i), Toast.LENGTH_SHORT).show();
@@ -76,10 +77,15 @@ public class FoodItemSearch {
         String tempMenu = genreMenus.substring(indOfStartOfRest);
         tempMenu = tempMenu.substring(0, tempMenu.indexOf("!"));
 
-        List<String> tempList = new ArrayList<>();
-        tempList.add(tempMenu);
 
-        List<String> locs = RestaurantLocationRetriever.getRestaurantLocations(ctxt, genre, tempList);
+        List<String> tempList = new ArrayList<>();
+
+        tempList.add(tempMenu);
+        for(int i = 0; i < tempList.size(); i++){
+            Toast.makeText(ctxt, "tempList item "+i+" "+tempList.get(i), Toast.LENGTH_SHORT).show();
+        }
+
+        List<String> locs = FoodLocationRetriever.getFoodLocations(ctxt, genre, tempList);
         LatLng coords = getLatLng(locs);
 
         List<String> RestaurantMenu = RestaurantMenuRetriever.getRestaurantMenu(genre, tempMenu, ctxt);
