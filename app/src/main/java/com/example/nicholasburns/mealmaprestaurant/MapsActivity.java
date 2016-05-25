@@ -65,11 +65,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         listOfGenres = genRet.getListOfGenres();
 
         listOfRestaurants = RestaurantRetriever.getListOfRestaurantsByGenre(this, "Fast Food");
-        //RestaurantMenuRetriever.getRestaurantMenu("Fast Food", "McDonald's", this);
-
-        //List<String> tempList = new ArrayList<>();
-        //tempList.add("Fast Food");
-        //FoodItemSearch.searchForFood("burger",this, tempList);
 
 
         //testing the handler
@@ -150,6 +145,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         startActivityForResult(sidebarIntent, RESULT);
     }
 
+    //Searches through the filtered genres for the specified food
     public void foodItemSearchBarSearchOnClick(View view){
         mMap.clear();
 
@@ -179,6 +175,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
+    //Result of genre activity filtering
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1){
@@ -202,6 +199,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
+    //determines which restaurant has been clicked
     public Restaurant findClickedRestaurant(Marker marker){
         Restaurant clickedRestaurant;
         LatLng clickedPos = marker.getPosition();
@@ -215,6 +213,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         return null;
     }
 
+    //adds the new restaurants to the map
     private void addNewRestaurantMarkers(){
         mMap.clear();
 

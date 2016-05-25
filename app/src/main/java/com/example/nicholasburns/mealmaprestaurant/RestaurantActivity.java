@@ -70,6 +70,10 @@ public class RestaurantActivity extends AppCompatActivity {
         //send the description of the food
         foodIntent.putExtra("description", foodDes);
 
+        foodIntent.putExtra("restaurantName", restaurantHandler.getName());
+
+        foodIntent.putExtra("genreName", restaurantHandler.getGenre());
+
         startActivityForResult(foodIntent, result);
     }
 }

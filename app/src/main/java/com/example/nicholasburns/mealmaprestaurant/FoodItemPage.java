@@ -3,6 +3,8 @@ package com.example.nicholasburns.mealmaprestaurant;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,7 +12,9 @@ import android.widget.TextView;
  * Created by 17nicholasburns on 2/29/2016.
  */
 public class FoodItemPage extends Activity{
-
+    private String foodName;
+    private String restaurantName;
+    private String genreName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +23,9 @@ public class FoodItemPage extends Activity{
 
         Intent foodWasCalled = getIntent();
 
-        String foodName = foodWasCalled.getExtras().getString("clickedFood");
+        foodName = foodWasCalled.getExtras().getString("clickedFood");
+        restaurantName = foodWasCalled.getExtras().getString("restaurantName");
+        genreName = foodWasCalled.getExtras().getString("genreName");
 
         int foodPicId = foodWasCalled.getExtras().getInt("foodPic");
 
@@ -93,5 +99,16 @@ public class FoodItemPage extends Activity{
         return 1;
     }
 
-    private void
+    public void ratingButtonOnClick(View view) {
+        Intent ratingIntent = new Intent(this, RatingActivity.class);
+        final int RESULT = 1;
+
+        ratingIntent.putExtra("foodName", foodName);
+
+        ratingIntent.putExtra("restaurantName", restaurantName);
+
+        ratingIntent.putExtra("genreName", genreName);
+
+        startActivityForResult(ratingIntent, RESULT);
+    }
 }
