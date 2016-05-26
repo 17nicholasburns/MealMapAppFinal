@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -35,6 +37,18 @@ public class RatingActivity extends Activity{
 
         RatingAdapter ratingAdapter = new RatingAdapter(this, ratings);
 
+        ratingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                                  @Override
+                                                  public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                                      int [] ratingIndexArray = new int[1];
+                                                      ratingIndexArray[0] = position;
+                                                      ratingIntent.putExtra("ratingIndex", ratingIndexArray);
+                                                      setResult(RESULT_OK, ratingIntent);
+                                                      finish();
+                                                  }
+                                              });
+
         ratingListView.setAdapter(ratingAdapter);
     }
+
 }

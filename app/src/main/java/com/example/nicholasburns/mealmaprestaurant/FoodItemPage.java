@@ -11,10 +11,12 @@ import android.widget.TextView;
 /**Activity for the page that opens when you click a food item
  * Created by 17nicholasburns on 2/29/2016.
  */
-public class FoodItemPage extends Activity{
+public class FoodItemPage extends Activity {
     private String foodName;
     private String restaurantName;
     private String genreName;
+    private int rating;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +33,7 @@ public class FoodItemPage extends Activity{
 
         String FDesString = foodWasCalled.getExtras().getString("description");
 
-        int rating = 4;
+        rating = RatingReader.getRating(foodName, genreName, this);
 
         //create image views for stars
         ImageView s1 = (ImageView) findViewById(R.id.star_one);
@@ -46,38 +48,44 @@ public class FoodItemPage extends Activity{
         ImageView foodImg = (ImageView) findViewById(R.id.image_specific_food);
 
         //decide the rating of the food
-        switch (rating){
-            case 1: s1.setImageResource(R.drawable.fullstar);
+        switch (rating) {
+            case 1:
+                s1.setImageResource(R.drawable.fullstar);
                 s2.setImageResource(R.drawable.emptystar);
                 s3.setImageResource(R.drawable.emptystar);
                 s4.setImageResource(R.drawable.emptystar);
                 s5.setImageResource(R.drawable.emptystar);
                 break;
-            case 2: s1.setImageResource(R.drawable.fullstar);
+            case 2:
+                s1.setImageResource(R.drawable.fullstar);
                 s2.setImageResource(R.drawable.fullstar);
                 s3.setImageResource(R.drawable.emptystar);
                 s4.setImageResource(R.drawable.emptystar);
                 s5.setImageResource(R.drawable.emptystar);
                 break;
-            case 3: s1.setImageResource(R.drawable.fullstar);
+            case 3:
+                s1.setImageResource(R.drawable.fullstar);
                 s2.setImageResource(R.drawable.fullstar);
                 s3.setImageResource(R.drawable.fullstar);
                 s4.setImageResource(R.drawable.emptystar);
                 s5.setImageResource(R.drawable.emptystar);
                 break;
-            case 4: s1.setImageResource(R.drawable.fullstar);
+            case 4:
+                s1.setImageResource(R.drawable.fullstar);
                 s2.setImageResource(R.drawable.fullstar);
                 s3.setImageResource(R.drawable.fullstar);
                 s4.setImageResource(R.drawable.fullstar);
                 s5.setImageResource(R.drawable.emptystar);
                 break;
-            case 5: s1.setImageResource(R.drawable.fullstar);
+            case 5:
+                s1.setImageResource(R.drawable.fullstar);
                 s2.setImageResource(R.drawable.fullstar);
                 s3.setImageResource(R.drawable.fullstar);
                 s4.setImageResource(R.drawable.fullstar);
                 s5.setImageResource(R.drawable.fullstar);
                 break;
-            default: s1.setImageResource(R.drawable.emptystar);
+            default:
+                s1.setImageResource(R.drawable.emptystar);
                 s2.setImageResource(R.drawable.emptystar);
                 s3.setImageResource(R.drawable.emptystar);
                 s4.setImageResource(R.drawable.emptystar);
@@ -93,6 +101,17 @@ public class FoodItemPage extends Activity{
         foodImg.setImageResource(foodPicId);
 
         foodDes.setText(FDesString);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                int newRating = data.getIntArrayExtra("ratingIndex")[0];
+                rating = RatingUpdater.changeRating(foodName, genreName, newRating, this);
+            }
+        }
     }
 
     //finds the rating of this foodItem
@@ -112,4 +131,5 @@ public class FoodItemPage extends Activity{
 
         startActivityForResult(ratingIntent, RESULT);
     }
+
 }
