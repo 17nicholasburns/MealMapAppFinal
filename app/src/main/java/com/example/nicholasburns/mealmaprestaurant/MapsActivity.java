@@ -65,19 +65,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         GenreRetriever genRet = new GenreRetriever(this);
         listOfGenres = genRet.getListOfGenres();
 
-        listOfRestaurants = RestaurantRetriever.getListOfRestaurantsByGenre(this, "Fast Food");
-
-
-        //testing the handler
-        List<FoodItem> menu = new ArrayList<FoodItem>();
-        menu.add(new FoodItem("Burger", R.drawable.food1, getResources().getString(R.string.food1_description)));
-        menu.add(new FoodItem("Salad", R.drawable.food2, getResources().getString(R.string.food2_description)));
-        menu.add(new FoodItem("Turkey", R.drawable.food3, getResources().getString(R.string.food3_description)));
-        menu.add(new FoodItem("T-bone Steak", R.drawable.food4, getResources().getString(R.string.food4_description)));
-        menu.add(new FoodItem("Horse?", R.drawable.food5, getResources().getString(R.string.food5_description)));
-        Restaurant restaurant = new Restaurant("Pratyay", R.drawable.restrant, menu, "Food. Haha.", -34, 151);
-
-        restaurantHandler = new RestaurantHandler(restaurant);
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             //decides what happens when the marker's info window is clicked
@@ -153,7 +140,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         List<String> listOfReturnGenres = new ArrayList<>();
         for(int i = 0; i <returnGenres.length; i++){
             listOfReturnGenres.add(returnGenres[i]);
-            Toast.makeText(this, listOfReturnGenres.get(i), Toast.LENGTH_SHORT).show();
         }
 
         String searchText = String.valueOf(searchBar.getText());
@@ -181,21 +167,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1){
             if(resultCode == RESULT_OK){
+                returnGenres = new String[0];
                 returnGenres = data.getStringArrayExtra("listOfCheckedGenres");
-
-                String genreToast = "";
 
                 listOfRestaurants.clear();
 
-
-                for(int i = 0; i < returnGenres.length; i++){
-                    genreToast = genreToast + returnGenres[i];
-                }
                 for(int i = 0; i < returnGenres.length; i++){
                     listOfRestaurants.addAll(RestaurantRetriever.getListOfRestaurantsByGenre(this, returnGenres[i]));
                 }
                 addNewRestaurantMarkers();
-                Toast.makeText(this, genreToast, Toast.LENGTH_SHORT).show();
             }
         }
     }

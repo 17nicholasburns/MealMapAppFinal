@@ -18,6 +18,7 @@ public class FoodItemPage extends Activity {
     private int rating;
 
     @Override
+    //tasks that will be completed when the activity is created
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -40,6 +41,8 @@ public class FoodItemPage extends Activity {
             rating = MapsActivity.rCC.getRating(foodName);
         }
 
+
+
         //create image views for stars
         ImageView s1 = (ImageView) findViewById(R.id.star_one);
         ImageView s2 = (ImageView) findViewById(R.id.star_two);
@@ -50,7 +53,6 @@ public class FoodItemPage extends Activity {
         TextView foodTitle = (TextView) findViewById(R.id.specific_food_title);
 
         //image of the food
-
         ImageView foodImg = (ImageView) findViewById(R.id.image_specific_food);
 
 
@@ -128,6 +130,7 @@ public class FoodItemPage extends Activity {
         return 1;
     }
 
+    //opens the activity when the button to rate a food item is clicked
     public void ratingButtonOnClick(View view) {
         Intent ratingIntent = new Intent(this, RatingActivity.class);
         final int RESULT = 1;

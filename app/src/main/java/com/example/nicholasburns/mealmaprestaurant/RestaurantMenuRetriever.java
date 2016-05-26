@@ -22,7 +22,6 @@ public class RestaurantMenuRetriever {
         genreName = gn;
         restaurantName = rn;
         restaurantMenu = new ArrayList<>();
-        Toast.makeText(ctxt, restaurantName, Toast.LENGTH_SHORT).show();
         String genreMenusFileName = findGenreMenusTxt(genreName);
         try{
             BufferedReader restaurantMenuReader = new BufferedReader(new InputStreamReader(ctxt.getAssets().open(genreMenusFileName)));

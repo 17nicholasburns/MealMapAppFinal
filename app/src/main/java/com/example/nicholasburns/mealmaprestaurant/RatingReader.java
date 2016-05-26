@@ -11,10 +11,8 @@ import java.io.InputStreamReader;
  * Created by Taquito on 5/25/2016.
  */
 public class RatingReader {
-    private static Context ratingContext;
 
-    public static int getRating(String foodItem, String genre, Context c){
-        ratingContext = c;
+    public static int getRating(String foodItem, String genre, Context ratingContext){
         String ratingFileName = getRatingFileName(genre);
         int rating = 0;
         String foodLocText = "("+foodItem+"=";
@@ -32,7 +30,7 @@ public class RatingReader {
 
         } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(c, "Failed to read ratings text file", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ratingContext, "Failed to read ratings text file", Toast.LENGTH_SHORT).show();
         }
         return rating;
     }

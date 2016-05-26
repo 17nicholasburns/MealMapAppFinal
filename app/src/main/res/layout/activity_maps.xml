@@ -32,10 +32,12 @@
             style="@style/Base.Widget.AppCompat.SearchView"/>
 
         <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:paddingTop="25dp"
             android:id="@+id/food_item_search_button"
             android:layout_toRightOf="@id/food_item_search_bar"
-            android:onClick="foodItemSearchBarSearchOnClick"/>
+            android:onClick="foodItemSearchBarSearchOnClick"
+            android:background="@drawable/searchimage"/>
     </RelativeLayout>
 </RelativeLayout>

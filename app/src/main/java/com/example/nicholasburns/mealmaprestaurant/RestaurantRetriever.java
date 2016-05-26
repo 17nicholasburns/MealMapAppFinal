@@ -19,6 +19,7 @@ public class RestaurantRetriever {
     private static String genreName;
 
     public static List<Restaurant> getListOfRestaurantsByGenre(Context restCtxt, String gn){
+        restaurants.clear();
         genreName = gn;
         restaurantNames = new ArrayList<String>();
         restaurantNames = RestaurantNameRetriever.getRestaurantNames(restCtxt, gn);
@@ -30,15 +31,13 @@ public class RestaurantRetriever {
         lngs = new double[restaurantLocations.size()];
 
 
+
         getLatAndLng(restaurantLocations, restCtxt);
 
         for (int i= 0; i < restaurantNames.size(); i++){
             List<String> menuStrings = new ArrayList<>();
             menuStrings = RestaurantMenuRetriever.getRestaurantMenu(genreName, restaurantNames.get(i), restCtxt);
             List<FoodItem> menu = getMenuFoodItems(menuStrings, restCtxt);
-            for(int j = 0; j < menuStrings.size(); j++){
-                Toast.makeText(restCtxt, menuStrings.get(j), Toast.LENGTH_SHORT).show();
-            }
             makeRestaurant(restaurantNames.get(i), lats[i], lngs[i], R.drawable.restrant, menu);
             menuStrings.clear();
         }
@@ -65,8 +64,7 @@ public class RestaurantRetriever {
         List<FoodItem> menu = new ArrayList<>();
         menu.clear();
         for(int i = 0; i < menuStrings.size(); i++) {
-            Toast.makeText(restCtxt, menuStrings.get(i), Toast.LENGTH_SHORT).show();
-            menu.add(new FoodItem(menuStrings.get(i), R.drawable.food1, restCtxt.getResources().getString(R.string.food1_description)));
+            menu.add(new FoodItem(menuStrings.get(i), R.drawable.food1, FoodItemDescriptionRetriever.getFoodItemDescription(menuStrings.get(i), genreName, restCtxt)));
         }
         return menu;
     }

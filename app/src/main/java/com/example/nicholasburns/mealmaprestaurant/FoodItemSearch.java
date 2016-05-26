@@ -26,7 +26,6 @@ public class FoodItemSearch {
         restaurants.clear();
         for(int i = 0; i < genres.size(); i++){
             String menuFileName = RestaurantMenuRetriever.findGenreMenusTxt(genres.get(i));
-            Toast.makeText(ctxt, "Reading Genre Menus of" + genres.get(i), Toast.LENGTH_SHORT).show();
             try {
                 BufferedReader restaurantMenuReader = new BufferedReader(new InputStreamReader(ctxt.getAssets().open(menuFileName)));
                 String genreMenus = restaurantMenuReader.readLine();
@@ -39,12 +38,8 @@ public class FoodItemSearch {
 
                         foodName = findFullItemName(locOfFoundText, genreMenus, ctxt);
 
-                        Toast.makeText(ctxt, foodName, Toast.LENGTH_SHORT).show();
-
                         Restaurant restOFFood = findFoodRestaurant(foodName, restaurantMenus, genres.get(i));
                         restaurants.add(restOFFood);
-
-                        Toast.makeText(ctxt, restOFFood.getName(), Toast.LENGTH_SHORT).show();
 
                         genreMenus = genreMenus.substring(genreMenus.indexOf(foodName) +foodName.length());
                     }
@@ -54,12 +49,7 @@ public class FoodItemSearch {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-                Toast.makeText(ctxt, "Error reading menus while searching for food items", Toast.LENGTH_LONG).show();
             }
-        }
-        for(int i = 0; i < restaurants.size(); i++){
-            Toast.makeText(ctxt, "restaurants list #"+i+": "+restaurants.get(i).getName(), Toast.LENGTH_SHORT).show();
-            Toast.makeText(ctxt, "restaurants list #"+i+" location: "+restaurants.get(i).getLat() +" "+ restaurants.get(i).getLng(), Toast.LENGTH_SHORT).show();
         }
         return restaurants;
     }
@@ -84,9 +74,6 @@ public class FoodItemSearch {
         List<String> tempList = new ArrayList<>();
 
         tempList.add(tempMenu);
-        for(int i = 0; i < tempList.size(); i++){
-            Toast.makeText(ctxt, "tempList item "+i+" "+tempList.get(i), Toast.LENGTH_SHORT).show();
-        }
 
         List<String> locs = FoodLocationRetriever.getFoodLocations(ctxt, genre, tempList);
         LatLng coords = getLatLng(locs);
@@ -96,7 +83,6 @@ public class FoodItemSearch {
         List<FoodItem> foodItemMenu = RestaurantRetriever.getMenuFoodItems(RestaurantMenu, ctxt);
 
         Restaurant retRest = new Restaurant(tempMenu, R.drawable.restrant, foodItemMenu, genre, coords.latitude, coords.longitude);
-        Toast.makeText(ctxt,"findFoodRestaurant return:" +retRest.getName(), Toast.LENGTH_SHORT).show();
         return retRest;
     }
 

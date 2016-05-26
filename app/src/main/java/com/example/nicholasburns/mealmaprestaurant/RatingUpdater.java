@@ -60,7 +60,6 @@ public class RatingUpdater {
 
         } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(c, "Failed to read ratings text file", Toast.LENGTH_SHORT).show();
         }
         return nextRating;
     }
