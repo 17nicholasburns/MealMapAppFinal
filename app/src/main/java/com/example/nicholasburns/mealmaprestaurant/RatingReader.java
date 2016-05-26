@@ -36,7 +36,7 @@ public class RatingReader {
         return rating;
     }
 
-    //
+    //returns the fileName that the foodItem's rating is contained in
     private static String getRatingFileName(String genre) {
         if(genre.equalsIgnoreCase("Fast Food")) {
             return "FastFoodRatings.txt";

@@ -14,6 +14,7 @@ import android.widget.TextView;
 public class RestaurantActivity extends AppCompatActivity {
 
     @Override
+    //determines what happens when the RestaurantActivity begins
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant);
@@ -37,6 +38,7 @@ public class RestaurantActivity extends AppCompatActivity {
 
         foodListView.setAdapter(foodAdapter);
 
+        //Onclick Listener that determines what happens when an item on the menu is clicked
         foodListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             //navigates to food description page if a food item is clicked

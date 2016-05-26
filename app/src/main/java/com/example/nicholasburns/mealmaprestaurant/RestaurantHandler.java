@@ -11,6 +11,8 @@ public class RestaurantHandler {
     private int imgId;
     private List<FoodItem> menu;
     private String genre;
+
+    //constructor for a RestaurantHandler
     public RestaurantHandler(Restaurant restaurant){
         name = restaurant.getName();
         imgId = restaurant.getImageID();
@@ -18,18 +20,22 @@ public class RestaurantHandler {
         genre = restaurant.getGenre();
     }
 
+    //returns the name of the restaurant it is handling
     public String getName(){
         return name;
     }
 
+    //returns the imageId of the restaurant it is handling
     public int getImgId(){
         return imgId;
     }
 
+    //returns the menu of the restaurant it is handling
     public List<FoodItem> getMenu(){
         return menu;
     }
 
+    //returns the genre of the restaurant it is handling
     public String getGenre(){
         return genre;
     }

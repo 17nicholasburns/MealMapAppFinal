@@ -18,6 +18,7 @@ public class RestaurantRetriever {
     private static double[] lngs;
     private static String genreName;
 
+    //returns a list of restaurants that are to be put on the map
     public static List<Restaurant> getListOfRestaurantsByGenre(Context restCtxt, String gn){
         restaurants.clear();
         genreName = gn;
@@ -44,10 +45,12 @@ public class RestaurantRetriever {
         return restaurants;
     }
 
+    //adds a new Restaurant object to the list of Restaurants
     private static void makeRestaurant(String name, double lat, double lng, int imageID, List<FoodItem> menu){
         restaurants.add(new Restaurant(name, imageID, menu, genreName, lat, lng));
     }
 
+    //creates the arrays of doubles representing latitudes and longitudes of the restaurants
     private static void getLatAndLng(List<String> latsAndLngs, Context ctxt){
         for(int i = 0; i < latsAndLngs.size(); i++){
             String latString = latsAndLngs.get(i).substring(0, latsAndLngs.get(i).indexOf(","));
@@ -60,6 +63,8 @@ public class RestaurantRetriever {
             lngs[i] = lng;
         }
     }
+
+    //returns a list of FoodItems that becone the current Restaurant's menu
     public static List<FoodItem> getMenuFoodItems(List<String> menuStrings, Context restCtxt){
         List<FoodItem> menu = new ArrayList<>();
         menu.clear();

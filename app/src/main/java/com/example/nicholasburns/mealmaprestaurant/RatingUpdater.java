@@ -64,6 +64,7 @@ public class RatingUpdater {
         return nextRating;
     }
 
+    //returns the file name that FoodItem's rating is in
     private static String getRatingFileName(String genre) {
         if(genre.equalsIgnoreCase("Fast Food")) {
             return "FastFoodRatings.txt";
@@ -88,6 +89,7 @@ public class RatingUpdater {
         }
     }
 
+    //returns the file path that FoodItem's rating should be written to
     private static String getRatingFilePath(String genre) {
         if(genre.equalsIgnoreCase("Fast Food")) {
             return "C:\\Users\\Taquito\\AndroidStudioProjects\\MealMapRestaurant2\\app\\src\\main\\assets\\FastFoodRatings.txt";

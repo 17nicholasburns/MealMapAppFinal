@@ -16,6 +16,7 @@ import java.util.List;
 public class RestaurantNameRetriever {
     private static List<String> restaurantNames;
 
+    //returns a List<String> of the names of restaurants in this genre
     public static List<String> getRestaurantNames(Context ctxt, String genreName) {
         restaurantNames = new ArrayList<String>();
         try {
@@ -37,9 +38,11 @@ public class RestaurantNameRetriever {
         return restaurantNames;
     }
 
+    //returns the next name of the next restaurant in the genre
     private static String getNextName(String names, Context ctxt) {
         String nextName;
         int locOfEnd;
+
         if(names.contains(".")){
             locOfEnd = names.indexOf(".");
         }
@@ -51,6 +54,7 @@ public class RestaurantNameRetriever {
         return nextName;
     }
 
+    //returns a string of only the names of restaurants in this genre
     private static String getListOfRestaurantsInGenre(String wholeString, String genreName){
         String newString ="";
         int i;
@@ -64,6 +68,7 @@ public class RestaurantNameRetriever {
             newString = newString + currentLetter;
             i++;
         }
+
         return newString;
     }
 }

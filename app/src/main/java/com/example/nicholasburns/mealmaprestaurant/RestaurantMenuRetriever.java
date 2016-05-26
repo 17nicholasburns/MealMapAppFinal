@@ -18,6 +18,7 @@ public class RestaurantMenuRetriever {
     public static String genreName;
     public static String restaurantName;
 
+    //Returns a list of strings representing the Restaurant's menu
     public static List<String> getRestaurantMenu(String gn, String rn, Context ctxt){
         genreName = gn;
         restaurantName = rn;
@@ -43,22 +44,29 @@ public class RestaurantMenuRetriever {
         return restaurantMenu;
     }
 
+    //retrieves the next item on the menu
     private static String getNextItem(String menuString) {
         String newString = "";
         newString = menuString.substring(0, menuString.indexOf("."));
         return newString;
     }
 
+    //retrieves the string of the menu of only the restaurant that is being processed
     private static String getMenuString(String genreMenus) {
         String newString = "";
+
         String startOfMenu = "!!"+restaurantName+"!!(START)=";
         String endOfMenu ="!!"+restaurantName+"!!(END)";
+
         int locOfStartOfMenu = genreMenus.indexOf(startOfMenu);
         int locOfEndOfMenu = genreMenus.indexOf(endOfMenu);
+
         newString = genreMenus.substring(locOfStartOfMenu +startOfMenu.length(), locOfEndOfMenu);
+
         return newString;
     }
 
+    //returns a string of the name of the .txt file containing this restaurant's menu
     public static String findGenreMenusTxt(String genreName) {
         if(genreName.equalsIgnoreCase("Fast Food")) {
             return "FastFoodMenus.txt";
