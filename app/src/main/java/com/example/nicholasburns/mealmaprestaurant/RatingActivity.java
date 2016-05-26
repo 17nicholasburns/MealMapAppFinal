@@ -25,8 +25,16 @@ public class RatingActivity extends Activity{
 
         ListView ratingListView = (ListView) findViewById(R.id.food_item_rating_list_view);
 
-        ImageView ratingImage = (ImageView) findViewById(R.id.rating_image);
+        String [] ratings = new String[5];
 
+        ratings[0] = "1";
+        ratings[1] = "2";
+        ratings[2] = "3";
+        ratings[3] = "4";
+        ratings[4] = "5";
 
+        RatingAdapter ratingAdapter = new RatingAdapter(this, ratings);
+
+        ratingListView.setAdapter(ratingAdapter);
     }
 }
