@@ -33,7 +33,12 @@ public class FoodItemPage extends Activity {
 
         String FDesString = foodWasCalled.getExtras().getString("description");
 
-        rating = RatingReader.getRating(foodName, genreName, this);
+        if(!MapsActivity.rCC.checkIfChanged(foodName)) {
+            rating = RatingReader.getRating(foodName, genreName, this);
+        }
+        else{
+            rating = MapsActivity.rCC.getRating(foodName);
+        }
 
         //create image views for stars
         ImageView s1 = (ImageView) findViewById(R.id.star_one);
@@ -45,7 +50,9 @@ public class FoodItemPage extends Activity {
         TextView foodTitle = (TextView) findViewById(R.id.specific_food_title);
 
         //image of the food
+
         ImageView foodImg = (ImageView) findViewById(R.id.image_specific_food);
+
 
         //decide the rating of the food
         switch (rating) {
@@ -104,12 +111,14 @@ public class FoodItemPage extends Activity {
     }
 
     @Override
+    //changes the rating of the food item, updates the ratingChangeChecker
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
                 int newRating = data.getIntArrayExtra("ratingIndex")[0];
-                rating = RatingUpdater.changeRating(foodName, genreName, newRating, this);
+                rating = RatingUpdater.changeRating(foodName, genreName, newRating+1, this);
+                MapsActivity.rCC.addNewChange(foodName, newRating+1, 1);
             }
         }
     }

@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+    public static RatingChangeChecker rCC = new RatingChangeChecker();
     private Button searchButton;
     private EditText searchBar;
     private GoogleMap mMap;
