@@ -17,6 +17,7 @@ public class RatingActivity extends Activity{
     Context context;
 
     @Override
+    //determines what happens once the RatingActivity Activity has been created
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rating_activity_layout);
@@ -37,6 +38,7 @@ public class RatingActivity extends Activity{
 
         RatingAdapter ratingAdapter = new RatingAdapter(this, ratings);
 
+        //OnItemClickListener for the items in the ratingListView: sets the new rating for the food item
         ratingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                                   @Override
                                                   public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

@@ -18,6 +18,7 @@ public class RatingAdapter extends ArrayAdapter<String>{
 
 
     @Override
+    //Returns the view for the RatingActivity Activity
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater ratingInflater = LayoutInflater.from(getContext());
 

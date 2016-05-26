@@ -21,7 +21,9 @@ import java.util.List;
 public class GenresActivity extends Activity {
     Context context;
     private List<String> listOfCheckedGenres = new ArrayList<String>();
+
     @Override
+    //Determines functions after the GenreActivity Activity has been created
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_genres);
@@ -44,6 +46,7 @@ public class GenresActivity extends Activity {
 
         Button genreFilterButton = (Button) findViewById(R.id.genre_filter_submit_button);
 
+        //OnClickListener that returns the genres that should appear on the map
         genreFilterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +75,8 @@ public class GenresActivity extends Activity {
 
         genreListView.setAdapter(genreAdapter);
     }
+
+
     /** Creates OnItemClickListener for the genre filters
      * Created by 17nicholasburns on 4/28/2016.
      */

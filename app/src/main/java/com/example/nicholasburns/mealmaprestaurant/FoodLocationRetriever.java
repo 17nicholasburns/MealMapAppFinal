@@ -15,6 +15,8 @@ import java.util.List;
 public class FoodLocationRetriever {
     private static List<String> restaurantLocations = new ArrayList<String>();
     private static List<String> restaurantNames = new ArrayList<String>();
+
+    //Retrieves the locations for food items found in the FoodItemSearch
     public static List<String> getFoodLocations(Context ctxt, String genreName, List<String> rNames){
         restaurantNames = rNames;
         restaurantLocations.clear();
@@ -41,16 +43,22 @@ public class FoodLocationRetriever {
         return restaurantLocations;
     }
 
+    //gets the string of the beginning and end of the genre
     private static String getGenreString(String wholeString, String genreName, Context ctxt) {
         String newString = "";
+
         String StartOfGenre = "!!"+genreName+"!!=";
         int locOfStartOfGenre = wholeString.indexOf(StartOfGenre);
+
         String EndOfGenre = "=??"+genreName+"??";
         int locOfEndOfGenre = wholeString.indexOf(EndOfGenre);
+
         newString = wholeString.substring(locOfStartOfGenre, locOfEndOfGenre + EndOfGenre.length());
+
         return newString;
     }
 
+    //gets the next location of a food item by searching for its restaurant
     private static String getNextLocation(int nameNum, String genreString, Context ctxt) {
         String newString ="";
         int i = 0;
@@ -58,9 +66,11 @@ public class FoodLocationRetriever {
         int startOfRestaurant = genreString.indexOf(restaurantNames.get(nameNum));
         genreString = genreString.substring(startOfRestaurant + restaurantNames.get(nameNum).length());
         newString = genreString.substring(genreString.indexOf("("),genreString.indexOf(")")+1);
+
         return newString;
     }
 
+    //returns a string that only has the numerical location of the restaurant
     private static String getLocationOnly(String nextLocation){
         int start = nextLocation.indexOf("(");
         int end = nextLocation.indexOf(")");

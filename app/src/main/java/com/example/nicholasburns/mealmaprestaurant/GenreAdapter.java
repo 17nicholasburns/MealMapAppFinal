@@ -16,11 +16,14 @@ import java.util.List;
  */
 public class GenreAdapter extends ArrayAdapter <String> {
     private List genreList;
+
+    //Constructor for a GenreAdapter object
     public GenreAdapter(Context context, String [] values) {
         super(context, R.layout.genre_list_item_view, values);
     }
 
     @Override
+    //returns the view of the GenreActivity
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater genreInflater = LayoutInflater.from(getContext());
 

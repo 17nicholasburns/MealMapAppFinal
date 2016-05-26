@@ -65,6 +65,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         GenreRetriever genRet = new GenreRetriever(this);
         listOfGenres = genRet.getListOfGenres();
 
+        //sets what happens when the user clicks the info window of a restaurant
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             //decides what happens when the marker's info window is clicked
@@ -103,6 +104,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         addNewRestaurantMarkers();
     }
+
     //swithches to the RestaurantActivity
     private void clickedRestaurant(Marker marker){
         Intent restIntent = new Intent(this, RestaurantActivity.class);

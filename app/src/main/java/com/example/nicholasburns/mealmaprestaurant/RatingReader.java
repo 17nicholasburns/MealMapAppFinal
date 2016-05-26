@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
  */
 public class RatingReader {
 
+    //searches through the ratings.txt files for which rating goes to which FoodItem
     public static int getRating(String foodItem, String genre, Context ratingContext){
         String ratingFileName = getRatingFileName(genre);
         int rating = 0;
@@ -35,6 +36,7 @@ public class RatingReader {
         return rating;
     }
 
+    //
     private static String getRatingFileName(String genre) {
         if(genre.equalsIgnoreCase("Fast Food")) {
             return "FastFoodRatings.txt";

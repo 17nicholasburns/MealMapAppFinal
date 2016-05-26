@@ -45,6 +45,8 @@ public class GenreRetriever {
         }
         return genres;
     }
+
+    //searches the string for the next genre
     private String getNextGenre(String g){
         String nextGenre = "";
         int locOfEnd;

@@ -34,6 +34,7 @@ public class RatingChangeChecker {
         }
     }
 
+    //confirms whether or not this foodItem should use its original rating
     public boolean checkIfChanged(String foodName){
         boolean found = false;
         for(int i = 0; i < ChangedFoodItems.size(); i++){
@@ -44,6 +45,7 @@ public class RatingChangeChecker {
         return found;
     }
 
+    //returns what the new rating should be
     public int getRating(String foodItem){
         int rate = 0;
         for(int i = 0; i < ChangedFoodItems.size(); i++){
@@ -54,6 +56,7 @@ public class RatingChangeChecker {
         return rate;
     }
 
+    //returns what number of responses the foodItem should have
     public int getNumOfAnswers(String foodItem){
         int numOfAnswers = 0;
         for(int i = 0; i < ChangedFoodItems.size(); i++){

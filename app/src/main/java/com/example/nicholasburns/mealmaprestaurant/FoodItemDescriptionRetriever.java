@@ -12,6 +12,8 @@ import java.util.List;
  * Created by 17nicholasburns on 5/26/2016.
  */
 public class FoodItemDescriptionRetriever {
+
+    //retrieves the descriptions of the food
     public static String getFoodItemDescription(String foodItem, String genre, Context c){
         String descriptionFileName = getDescriptionFileName(genre);
         String foodLocText = "("+foodItem+"=";
@@ -35,6 +37,7 @@ public class FoodItemDescriptionRetriever {
         return descriptionString;
     }
 
+    //gets the file name of the descriptions based on their genre
     private static String getDescriptionFileName(String genre) {
         if(genre.equalsIgnoreCase("Fast Food")) {
             return "FastFoodDescriptions.txt";
