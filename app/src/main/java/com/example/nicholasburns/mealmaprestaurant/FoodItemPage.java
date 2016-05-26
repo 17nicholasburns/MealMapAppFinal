@@ -95,6 +95,7 @@ public class FoodItemPage extends Activity{
         foodDes.setText(FDesString);
     }
 
+    //finds the rating of this foodItem
     private int getRating(String foodName) {
         return 1;
     }

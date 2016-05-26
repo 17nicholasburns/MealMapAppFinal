@@ -19,6 +19,8 @@ public class FoodItemSearch {
     public static List<FoodItem> foodItems;
     public static List<Restaurant> restaurants = new ArrayList<Restaurant>();
     private static Context ctxt;
+
+    //initiates the search for a food item
     public static List<Restaurant> searchForFood(String searchText, Context c, List<String> genres){
         ctxt = c;
         restaurants.clear();
@@ -62,6 +64,7 @@ public class FoodItemSearch {
         return restaurants;
     }
 
+    //finds the other FoodItems in the found restaurant
     private static Restaurant findFoodRestaurant(String foodName, String genreMenus, String genre) {
         int indOfStart = genreMenus.indexOf(foodName);
         int indOfStartOfRest = 0;
@@ -97,6 +100,7 @@ public class FoodItemSearch {
         return retRest;
     }
 
+    //gets the latitude and longitude of the restaurant
     private static LatLng getLatLng(List<String> locs) {
         String latString = locs.get(0).substring(0, locs.get(0).indexOf(","));
         String lngString = locs.get(0).substring(locs.get(0).indexOf(",") + 1, locs.get(0).length());
@@ -107,6 +111,7 @@ public class FoodItemSearch {
         return new LatLng(lat, lng);
     }
 
+    //finds the rest of the item's name, besides the text found
     private static String findFullItemName(int locOfFoundText, String genreMenu, Context ctxt) {
         int indexOfStart = 0;
         int indexOfEnd = 0;

@@ -8,6 +8,8 @@ public class FoodItem {
     public String name;
     public int imageId;
     public String description;
+
+    //constructor for a FoodItem object
     public FoodItem(String n, int imgId, String des){
         name = n;
         imageId = imgId;

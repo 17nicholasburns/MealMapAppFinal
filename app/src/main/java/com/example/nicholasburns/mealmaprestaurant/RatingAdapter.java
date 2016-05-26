@@ -24,10 +24,10 @@ public class RatingAdapter extends ArrayAdapter<String>{
         View ratingView = ratingInflater.inflate(R.layout.rating_item_layout, parent, false);
 
         ImageView s1 = (ImageView) ratingView.findViewById(R.id.rating_image1);
-        ImageView s2 = (ImageView) ratingView.findViewById(R.id.star_two);
-        ImageView s3 = (ImageView) ratingView.findViewById(R.id.star_three);
-        ImageView s4 = (ImageView) ratingView.findViewById(R.id.star_four);
-        ImageView s5 = (ImageView) ratingView.findViewById(R.id.star_five);
+        ImageView s2 = (ImageView) ratingView.findViewById(R.id.rating_image2);
+        ImageView s3 = (ImageView) ratingView.findViewById(R.id.rating_image3);
+        ImageView s4 = (ImageView) ratingView.findViewById(R.id.rating_image4);
+        ImageView s5 = (ImageView) ratingView.findViewById(R.id.rating_image5);
 
         if(position==0){
             s1.setImageResource(R.drawable.fullstar);

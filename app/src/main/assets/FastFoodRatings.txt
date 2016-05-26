@@ -1,0 +1,1 @@
+(Whopper=4:9)(Whopper Jr=3:4)(Tendercrisp Garden Salad=2:10)(Chicken Tenders=4:19)(Big Mac=2:3)(Cheeseburger=0:0)(Double Cheeseburger=4:6)(Steakburger=5:)(Double SteakBurger=2:19)
